@@ -1,0 +1,244 @@
+{
+   "$id": "https://goodhealthpass.org/ghp-vocab",
+   "$schema": "http://json-schema.org/draft-07/schema#",
+   "definitions": {
+      "DGCInfectionInformation": {
+         "additionalProperties": false,
+         "description": "Minimal Covid-19 Recovery information mapped to FHIR DGC profile",
+         "properties": {
+            "countryOfTest": {
+               "type": "string"
+            },
+            "dateFirstPositive": {
+               "type": "string"
+            },
+            "diseaseRecoveredFrom": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "diseaseRecoveredFrom",
+            "dateFirstPositive",
+            "countryOfTest"
+         ],
+         "title": "DGCInfectionInformation",
+         "type": "object"
+      },
+      "DGCPatient": {
+         "additionalProperties": false,
+         "description": "Minimal Person information mapped to FHIR DGC Patient",
+         "properties": {
+            "first_name": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "gender": {
+               "type": "string"
+            },
+            "id": {
+               "type": "string"
+            },
+            "last_name": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "id",
+            "first_name",
+            "last_name",
+            "gender"
+         ],
+         "title": "DGCPatient",
+         "type": "object"
+      },
+      "DGCTestInformation": {
+         "additionalProperties": false,
+         "description": "Minimal Covid-19 Lab test information mapped to FHIR DGC profile",
+         "properties": {
+            "countryOfTestAdminstration": {
+               "type": "string"
+            },
+            "healthProfessionalAdministered": {
+               "type": "string"
+            },
+            "sampleCollectionDateTime": {
+               "type": "string"
+            },
+            "sampleOriginType": {
+               "type": "string"
+            },
+            "testCenter": {
+               "type": "string"
+            },
+            "testDetails": {
+               "type": "string"
+            },
+            "testName": {
+               "type": "string"
+            },
+            "testResult": {
+               "type": "string"
+            },
+            "testType": {
+               "type": "string"
+            },
+            "testValidatorId": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "testName",
+            "testType",
+            "sampleOriginType",
+            "sampleCollectionDateTime",
+            "testResult",
+            "testCenter",
+            "testValidatorId",
+            "healthProfessionalAdministered",
+            "testDetails",
+            "countryOfTestAdminstration"
+         ],
+         "title": "DGCTestInformation",
+         "type": "object"
+      },
+      "DGCVaccinationInformation": {
+         "additionalProperties": false,
+         "description": "Minimal vaccination event information mapped to FHIR DGC profile",
+         "properties": {
+            "administeringCentre": {
+               "type": "string"
+            },
+            "batchNumber": {
+               "type": "string"
+            },
+            "countryOfVaccination": {
+               "type": "string"
+            },
+            "dateOfVaccination": {
+               "type": "string"
+            },
+            "healthProfessional": {
+               "type": "string"
+            },
+            "nextVaccinationDate": {
+               "type": "string"
+            },
+            "order": {
+               "type": "string"
+            },
+            "vaccine": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "administeringCentre",
+            "batchNumber",
+            "countryOfVaccination",
+            "dateOfVaccination",
+            "healthProfessional",
+            "order",
+            "vaccine"
+         ],
+         "title": "DGCVaccinationInformation",
+         "type": "object"
+      },
+      "DGCVaccine": {
+         "additionalProperties": false,
+         "description": "Minimal vaccine information mapped to FHIR DGC valuesets",
+         "properties": {
+            "code": {
+               "type": "string"
+            },
+            "marketingAuthHolder": {
+               "type": "string"
+            },
+            "medicinalProductName": {
+               "type": "string"
+            },
+            "targetDisease": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "code",
+            "targetDisease",
+            "marketingAuthHolder",
+            "medicinalProductName"
+         ],
+         "title": "DGCVaccine",
+         "type": "object"
+      },
+      "GHPProofOfCovidTest": {
+         "additionalProperties": false,
+         "description": "Proof of Covid-19 Lab test",
+         "properties": {
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "personalInformation": {
+               "type": "string"
+            },
+            "testInformation": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "testInformation",
+            "personalInformation"
+         ],
+         "title": "GHPProofOfCovidTest",
+         "type": "object"
+      },
+      "GHPProofOfRecovery": {
+         "additionalProperties": false,
+         "description": "Proof of recovery from Covid-19",
+         "properties": {
+            "infectionInformation": {
+               "type": "string"
+            },
+            "personalInformation": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "infectionInformation",
+            "personalInformation"
+         ],
+         "title": "GHPProofOfRecovery",
+         "type": "object"
+      },
+      "GHPProofOfVaccination": {
+         "additionalProperties": false,
+         "description": "Proof of Covid-19 Vaccination",
+         "properties": {
+            "evidence": {
+               "items": {
+                  "type": "string"
+               },
+               "type": "array"
+            },
+            "personalInformation": {
+               "type": "string"
+            },
+            "vaccinationInformation": {
+               "type": "string"
+            }
+         },
+         "required": [
+            "vaccinationInformation",
+            "personalInformation"
+         ],
+         "title": "GHPProofOfVaccination",
+         "type": "object"
+      }
+   },
+   "properties": {},
+   "title": "ghp-vocab",
+   "type": "object"
+}
+

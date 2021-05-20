@@ -1,14 +1,14 @@
-model_organization:    # Name of github individual organization where this cone exists (e.g. linkml / mygithub
-model_name:            # Name of target repository (e.g. my-wonderful-model)
-root_schema: sample_model  # the name of the base schema file (w/o .yaml) 
-model_root_class: Person   # <name of the base class in the schema for testing
+model_organization:  goodhealthpass.org  # Name of github individual organization where this cone exists (e.g. linkml / mygithub
+model_name: ghp-vocab # Name of target repository (e.g. my-wonderful-model)
+root_schema: ghp-base  # the name of the base schema file (w/o .yaml) 
+model_root_class: DGCPerson   # <name of the base class in the schema for testing
 
-model_author:              # Your name
-model_author_email:        # Your email
-model_synopsis:  A really nice model     # One liner about the model
+model_author:  Mukundan Parthasarathy   # Your name
+model_author_email:  mukundanps@gmail.com # Your email
+model_synopsis: Vaccination, Proof of (Lab) negative test, Proof of Recovery cert vocab     # One liner about the model
 model_description: |-      # Longer description of the model
-  This is a really nice model that
-  does stuff
+  Voabulary to support Good Health Pass initiative for Covid-19 credentials.
+  Uses BBS+/ZKP.
 
 # Trove Classifiers (https://pypi.org/classifiers/) -- these can be omitted if the elemens below are sufficient
 classifiers:
@@ -37,5 +37,5 @@ keywords: [linkml, LOD, Modeling, Linked open data, model]
 #                  shex -- LinkML model definition in ShEx
 #                  sqlddl -- SQL ddl of the model
 #                  model -- copy model/schema to distribution directory
-generate: [jsonld_context, json_schema, model]
+generate: [jsonld_context, json_schema, rdf, owl, shex, sqlddl]
 

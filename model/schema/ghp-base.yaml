@@ -1,0 +1,188 @@
+id: https://goodhealthpass.org/ghp-vocab
+title: Good Health Pass vocabulary for Covid-19
+name: ghp-vocab
+license: https://creativecommons.org/publicdomain/zero/1.0/
+version: 0.0.1
+
+prefixes:
+ linkml: https://w3id.org/linkml/
+ sdo: https://schema.org/
+ ghp: https://goodhealthpass.org/ghp-vocab/
+ xsd: http://www.w3.org/2001/XMLSchema#
+ pathogen: https://w3id.org/pathogen#
+ dgc: http://hl7.eu/fhir/ig/dgc/
+ icd-entity: http://id.who.int/icd/entity/
+ base-fhir: http://hl7.org/fhir/
+ who-ips: http://hl7.org/fhir/uv/ips/
+ sct: http://snomed.info/sct/
+
+
+default_prefix: ghp
+default_curi_maps:
+ - semweb_context
+
+types:
+  string:
+    base: str
+    uri: xsd:string
+
+
+classes:
+  DGCPatient:
+   description: Minimal Person information mapped to FHIR DGC Patient
+   class_uri: pathogen:DGCPatient
+   attributes:
+      id:
+        identifier: true
+        slot_uri: dgc:PatientDGC.name.familyName
+      first_name:
+        required: true
+        slot_uri: dgc:PatientDGC.name.givenName
+        multivalued: true
+      last_name:
+       required: true
+       slot_uri: dgc:PatientDGC.name.familyName
+      gender:
+        required: true
+        slot_uri: base-fhir:gender-identity
+
+  DGCVaccine:
+    description: Minimal vaccine information mapped to FHIR DGC valuesets
+    class_uri: pathogen:DGCVaccine
+    attributes:
+      code:
+        required: true
+        slot_uri: icd-entity:164949870
+      targetDisease:
+        required: true
+        slot_uri: dgc:ImmunizationDGC.protocolApplied.targetedDisease
+      marketingAuthHolder:
+        required: true
+        slot_uri: dgc:ValueSet/vaccines-covid-19-auth-holders
+      medicinalProductName:
+        required: true
+        slot_uri: dgc:ValueSet/vaccines-covid-19-names
+
+  DGCVaccinationInformation:
+    description: Minimal vaccination event information mapped to FHIR DGC profile
+    class_uri: pathogen:DGCVaccinationInformation
+    attributes:
+      administeringCentre:
+        required: true 
+        slot_uri: who-ips:Immunization.location.name
+      batchNumber:
+        required: true
+        slot_uri: who-ips:Immunization.lotNumber
+      countryOfVaccination:
+        required: true
+        slot_uri: base-fhir:ValueSet/iso3166-1-2
+      dateOfVaccination:
+        required: true
+        slot_uri: dgc:ImmunizationDGC.occurenceDateTime
+      healthProfessional:
+        required: true
+        slot_uri: base-fhir:ValueSet/immunization-function
+      nextVaccinationDate:
+        required: false
+        slot_uri: dgc:ImmunizationRecommendationDGC.dateCriterion.value
+      order:
+        required: true
+        slot_uri: who-ips:ImmunizationDGC.protocolApplied.doseNumber
+      vaccine:
+        required: true
+        slot_uri: pathogen:DGCVaccine
+
+  DGCTestInformation:
+    description: Minimal Covid-19 Lab test information mapped to FHIR DGC profile
+    class_uri: pathogen:DGCTestInformation
+    attributes:
+      testName:
+        required: true
+        slot_uri: dgc:ValueSet/loinc-tests-covid-19
+      testType:
+        required: true
+        slot_uri: dgc:ValueSet/covid-19-lab-methods
+      sampleOriginType:
+        required: true
+        slot_uri: base-fhir:ValueSet/body-site
+      sampleCollectionDateTime:
+        required: true
+        slot_uri: dgc:DiagnosticReport.specimen.collectedDateTime
+      testResult:
+        required: true
+        slot_uri: base-fhir:ValueSet/observation-interpretation
+      testCenter:
+        required: true
+        slot_uri: dgc:LocationDGC
+      testValidatorId:
+        required: true
+        slot_uri: dgc:DiagnosticReport.resultsIntepreter
+      healthProfessionalAdministered:
+        required: true
+        slot_uri: dgc:ImmunizationDGC.performer.actor
+      testDetails:
+        required: true
+        slot_uri: dgc:ObservationCovidImmunity.code
+      countryOfTestAdminstration:
+        required: true
+        slot_uri: base-fhir:ValueSet/iso3166-1-2
+
+  DGCInfectionInformation: 
+    description: Minimal Covid-19 Recovery information mapped to FHIR DGC profile
+    class_uri: pathogen:DGCInfectionInformation
+    attributes:
+      diseaseRecoveredFrom:
+        required: true
+        slot_uri: sct:840539006
+      dateFirstPositive:
+        required: true
+        slot_uri: dgc:DiagnosticReport.result.effectiveDateTime
+      countryOfTest:
+        required: true
+        slot_uri: base-fhir:ValueSet/iso3166-1-2
+
+
+  GHPProofOfVaccination:
+    description: Proof of Covid-19 Vaccination
+    class_uri: pathogen:GHPProofOfVaccination
+    attributes: 
+      vaccinationInformation:
+        required: true
+        slot_uri: pathogen:DGCVaccinationInformation
+      personalInformation:
+        required: true
+        slot_uri: pathogen:DGCPatient
+      evidence:
+        required: false
+        multivalued: true
+
+  GHPProofOfCovidTest:
+    description: Proof of Covid-19 Lab test
+    class_uri: pathogen:GHPProofOfCovidTest
+    attributes:
+      testInformation:
+        required: true
+        slot_uri: pathogen:DGCTestInformation
+      personalInformation:
+        required: true
+        slot_uri: pathogen:DGCPatient
+      evidence:
+        required: false
+        multivalued: true
+
+  GHPProofOfRecovery:
+    description: Proof of recovery from Covid-19
+    class_uri: pathogen:GHPProofOfRecovery
+    attributes:
+      infectionInformation:
+        required: true
+        slot_uri: pathogen:DGCInfectionInformation
+      personalInformation:
+        required: true
+        slot_uri: pathogen:DGCPatient
+
+  
+
+      
+      
+

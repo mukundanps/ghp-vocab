@@ -1,0 +1,63 @@
+BASE <https://goodhealthpass.org/ghp-vocab/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX pathogen: <https://w3id.org/pathogen#>
+PREFIX dgc: <http://hl7.eu/fhir/ig/dgc/>
+PREFIX icd-entity: <http://id.who.int/icd/entity/>
+PREFIX base-fhir: <http://hl7.org/fhir/>
+PREFIX who-ips: <http://hl7.org/fhir/uv/ips/>
+
+
+<String> xsd:string
+
+<DGCPatient> CLOSED {
+    (  $<DGCPatient_tes> (  dgc:PatientDGC.name.givenName @<String> + ;
+          dgc:PatientDGC.name.familyName @<String> ;
+          base-fhir:gender-identity @<String>
+       ) ;
+       rdf:type [ pathogen:DGCPatient ]
+    )
+}
+
+<DGCTestInformation> CLOSED {
+    (  $<DGCTestInformation_tes> (  <http://hl7.eu/fhir/ig/dgc/ValueSet/loinc-tests-covid-19> @<String> ;
+          <http://hl7.eu/fhir/ig/dgc/ValueSet/covid-19-lab-methods> @<String> ;
+          <http://hl7.org/fhir/ValueSet/body-site> @<String> ;
+          dgc:DiagnosticReport.specimen.collectedDateTime @<String> ;
+          <http://hl7.org/fhir/ValueSet/observation-interpretation> @<String> ;
+          dgc:LocationDGC @<String> ;
+          dgc:DiagnosticReport.resultsIntepreter @<String> ;
+          dgc:ImmunizationDGC.performer.actor @<String> ;
+          dgc:ObservationCovidImmunity.code @<String> ;
+          <http://hl7.org/fhir/ValueSet/iso3166-1-2> @<String>
+       ) ;
+       rdf:type [ pathogen:DGCTestInformation ] ?
+    )
+}
+
+<DGCVaccinationInformation> CLOSED {
+    (  $<DGCVaccinationInformation_tes> (  who-ips:Immunization.location.name @<String> ;
+          who-ips:Immunization.lotNumber @<String> ;
+          <http://hl7.org/fhir/ValueSet/iso3166-1-2> @<String> ;
+          dgc:ImmunizationDGC.occurenceDateTime @<String> ;
+          <http://hl7.org/fhir/ValueSet/immunization-function> @<String> ;
+          dgc:ImmunizationRecommendationDGC.dateCriterion.value @<String> ? ;
+          who-ips:ImmunizationDGC.protocolApplied.doseNumber @<String> ;
+          pathogen:DGCVaccine @<String>
+       ) ;
+       rdf:type [ pathogen:DGCVaccinationInformation ] ?
+    )
+}
+
+<DGCVaccine> CLOSED {
+    (  $<DGCVaccine_tes> (  icd-entity:164949870 @<String> ;
+          dgc:ImmunizationDGC.protocolApplied.targetedDisease @<String> ;
+          <http://hl7.eu/fhir/ig/dgc/ValueSet/vaccines-covid-19-auth-holders> @<String> ;
+          <http://hl7.eu/fhir/ig/dgc/ValueSet/vaccines-covid-19-names> @<String>
+       ) ;
+       rdf:type [ pathogen:DGCVaccine ] ?
+    )
+}
+
+
+

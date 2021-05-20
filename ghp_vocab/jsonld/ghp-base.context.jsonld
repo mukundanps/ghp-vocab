@@ -1,0 +1,138 @@
+{
+   "_comments": "Auto generated from ghp-base.yaml by jsonldcontextgen.py version: 0.1.1\n    Generation date: 2021-05-19 21:41\n    Schema: ghp-vocab\n    \n    id: https://goodhealthpass.org/ghp-vocab\n    description: \n    license: https://creativecommons.org/publicdomain/zero/1.0/\n    ",
+   "@context": {
+      "base-fhir": "http://hl7.org/fhir/",
+      "dgc": "http://hl7.eu/fhir/ig/dgc/",
+      "ghp": "https://goodhealthpass.org/ghp-vocab/",
+      "icd-entity": "http://id.who.int/icd/entity/",
+      "linkml": "https://w3id.org/linkml/",
+      "pathogen": "https://w3id.org/pathogen#",
+      "sct": "http://snomed.info/sct/",
+      "sdo": "https://schema.org/",
+      "who-ips": "http://hl7.org/fhir/uv/ips/",
+      "xsd": "http://www.w3.org/2001/XMLSchema#",
+      "@vocab": "https://goodhealthpass.org/ghp-vocab/",
+      "countryOfTest": {
+         "@id": "base-fhir:ValueSet/iso3166-1-2"
+      },
+      "dateFirstPositive": {
+         "@id": "dgc:DiagnosticReport.result.effectiveDateTime"
+      },
+      "diseaseRecoveredFrom": {
+         "@id": "sct:840539006"
+      },
+      "first_name": {
+         "@id": "dgc:PatientDGC.name.givenName"
+      },
+      "gender": {
+         "@id": "base-fhir:gender-identity"
+      },
+      "id": "@id",
+      "last_name": {
+         "@id": "dgc:PatientDGC.name.familyName"
+      },
+      "countryOfTestAdminstration": {
+         "@id": "base-fhir:ValueSet/iso3166-1-2"
+      },
+      "healthProfessionalAdministered": {
+         "@id": "dgc:ImmunizationDGC.performer.actor"
+      },
+      "sampleCollectionDateTime": {
+         "@id": "dgc:DiagnosticReport.specimen.collectedDateTime"
+      },
+      "sampleOriginType": {
+         "@id": "base-fhir:ValueSet/body-site"
+      },
+      "testCenter": {
+         "@id": "dgc:LocationDGC"
+      },
+      "testDetails": {
+         "@id": "dgc:ObservationCovidImmunity.code"
+      },
+      "testName": {
+         "@id": "dgc:ValueSet/loinc-tests-covid-19"
+      },
+      "testResult": {
+         "@id": "base-fhir:ValueSet/observation-interpretation"
+      },
+      "testType": {
+         "@id": "dgc:ValueSet/covid-19-lab-methods"
+      },
+      "testValidatorId": {
+         "@id": "dgc:DiagnosticReport.resultsIntepreter"
+      },
+      "administeringCentre": {
+         "@id": "who-ips:Immunization.location.name"
+      },
+      "batchNumber": {
+         "@id": "who-ips:Immunization.lotNumber"
+      },
+      "countryOfVaccination": {
+         "@id": "base-fhir:ValueSet/iso3166-1-2"
+      },
+      "dateOfVaccination": {
+         "@id": "dgc:ImmunizationDGC.occurenceDateTime"
+      },
+      "healthProfessional": {
+         "@id": "base-fhir:ValueSet/immunization-function"
+      },
+      "nextVaccinationDate": {
+         "@id": "dgc:ImmunizationRecommendationDGC.dateCriterion.value"
+      },
+      "order": {
+         "@id": "who-ips:ImmunizationDGC.protocolApplied.doseNumber"
+      },
+      "vaccine": {
+         "@id": "pathogen:DGCVaccine"
+      },
+      "code": {
+         "@id": "icd-entity:164949870"
+      },
+      "marketingAuthHolder": {
+         "@id": "dgc:ValueSet/vaccines-covid-19-auth-holders"
+      },
+      "medicinalProductName": {
+         "@id": "dgc:ValueSet/vaccines-covid-19-names"
+      },
+      "targetDisease": {
+         "@id": "dgc:ImmunizationDGC.protocolApplied.targetedDisease"
+      },
+      "personalInformation": {
+         "@id": "pathogen:DGCPatient"
+      },
+      "testInformation": {
+         "@id": "pathogen:DGCTestInformation"
+      },
+      "infectionInformation": {
+         "@id": "pathogen:DGCInfectionInformation"
+      },
+      "vaccinationInformation": {
+         "@id": "pathogen:DGCVaccinationInformation"
+      },
+      "DGCInfectionInformation": {
+         "@id": "pathogen:DGCInfectionInformation"
+      },
+      "DGCPatient": {
+         "@id": "pathogen:DGCPatient"
+      },
+      "DGCTestInformation": {
+         "@id": "pathogen:DGCTestInformation"
+      },
+      "DGCVaccinationInformation": {
+         "@id": "pathogen:DGCVaccinationInformation"
+      },
+      "DGCVaccine": {
+         "@id": "pathogen:DGCVaccine"
+      },
+      "GHPProofOfCovidTest": {
+         "@id": "pathogen:GHPProofOfCovidTest"
+      },
+      "GHPProofOfRecovery": {
+         "@id": "pathogen:GHPProofOfRecovery"
+      },
+      "GHPProofOfVaccination": {
+         "@id": "pathogen:GHPProofOfVaccination"
+      }
+   }
+}
+

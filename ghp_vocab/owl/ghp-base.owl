@@ -1,0 +1,307 @@
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix linkml: <https://w3id.org/linkml/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://goodhealthpass.org/ghp-vocab> a owl:Ontology ;
+    rdfs:label "ghp-vocab" ;
+    dcterms:license "https://creativecommons.org/publicdomain/zero/1.0/" ;
+    dcterms:title "Good Health Pass vocabulary for Covid-19" ;
+    linkml:generation_date "2021-05-19 15:58" ;
+    linkml:metamodel_version "1.7.0" ;
+    linkml:source_file "ghp-base.yaml" ;
+    linkml:source_file_date "Wed May 19 15:30:01 2021" ;
+    linkml:source_file_size 3852 .
+
+<https://goodhealthpass.org/ghp-vocab/DGCPatient> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DGCPatient" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:id ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:last_name ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:gender ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Class ;
+            owl:intersectionOf ( [ a owl:Restriction ;
+                        owl:allValuesFrom <https://goodhealthpass.org/ghp-vocab/String> ;
+                        owl:onProperty linkml:first_name ] [ a owl:Restriction ;
+                        owl:onProperty linkml:first_name ;
+                        owl:someValuesFrom <https://goodhealthpass.org/ghp-vocab/String> ] ) ] ;
+    skos:definition "Minimal Person information mapped to FHIR DGC Patient" ;
+    skos:exactMatch <https://w3id.org/pathogen#DGCPatient> .
+
+<https://goodhealthpass.org/ghp-vocab/DGCTestInformation> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DGCTestInformation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:sampleCollectionDateTime ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:testName ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:testResult ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:testValidatorId ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:sampleOriginType ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:healthProfessionalAdministered ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:countryOfTestAdminstration ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:testDetails ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:testCenter ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:testType ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "Minimal Covid-19 Lab test information mapped to FHIR DGC profile" ;
+    skos:exactMatch <https://w3id.org/pathogen#DGCTestInformation> .
+
+<https://goodhealthpass.org/ghp-vocab/DGCVaccinationInformation> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DGCVaccinationInformation" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:administeringCentre ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:batchNumber ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:order ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:healthProfessional ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:vaccine ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:dateOfVaccination ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:countryOfVaccination ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:maxQualifiedCardinality 1 ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:nextVaccinationDate ] ;
+    skos:definition "Minimal vaccination event information mapped to FHIR DGC profile" ;
+    skos:exactMatch <https://w3id.org/pathogen#DGCVaccinationInformation> .
+
+<https://goodhealthpass.org/ghp-vocab/DGCVaccine> a owl:Class,
+        linkml:ClassDefinition ;
+    rdfs:label "DGCVaccine" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:marketingAuthHolder ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:medicinalProductName ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:targetDisease ;
+            owl:qualifiedCardinality 1 ],
+        [ a owl:Restriction ;
+            owl:onClass <https://goodhealthpass.org/ghp-vocab/String> ;
+            owl:onProperty linkml:code ;
+            owl:qualifiedCardinality 1 ] ;
+    skos:definition "Minimal vaccine information mapped to FHIR DGC valuesets" ;
+    skos:exactMatch <https://w3id.org/pathogen#DGCVaccine> .
+
+linkml:SubsetDefinition a owl:Class ;
+    rdfs:label "subset_definition" ;
+    skos:definition "the name and description of a subset" .
+
+linkml:dGCPatient__first_name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCPatient__first_name" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCPatient__gender a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCPatient__gender" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCPatient__id a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCPatient__id" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCPatient__last_name a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCPatient__last_name" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__countryOfTestAdminstration a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__countryOfTestAdminstration" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__healthProfessionalAdministered a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__healthProfessionalAdministered" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__sampleCollectionDateTime a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__sampleCollectionDateTime" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__sampleOriginType a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__sampleOriginType" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__testCenter a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__testCenter" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__testDetails a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__testDetails" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__testName a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__testName" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__testResult a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__testResult" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__testType a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__testType" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCTestInformation__testValidatorId a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCTestInformation__testValidatorId" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccinationInformation__administeringCentre a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccinationInformation__administeringCentre" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccinationInformation__batchNumber a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccinationInformation__batchNumber" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccinationInformation__countryOfVaccination a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccinationInformation__countryOfVaccination" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccinationInformation__dateOfVaccination a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccinationInformation__dateOfVaccination" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccinationInformation__healthProfessional a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccinationInformation__healthProfessional" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccinationInformation__nextVaccinationDate a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccinationInformation__nextVaccinationDate" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccinationInformation__order a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccinationInformation__order" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccinationInformation__vaccine a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccinationInformation__vaccine" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccine__code a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccine__code" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccine__marketingAuthHolder a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccine__marketingAuthHolder" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccine__medicinalProductName a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccine__medicinalProductName" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:dGCVaccine__targetDisease a owl:ObjectProperty,
+        linkml:SlotDefinition ;
+    rdfs:label "dGCVaccine__targetDisease" ;
+    rdfs:range <https://goodhealthpass.org/ghp-vocab/String> .
+
+linkml:TypeDefinition a owl:Class ;
+    rdfs:label "type_definition" ;
+    skos:definition "A data type definition." .
+
+linkml:topValue a owl:DatatypeProperty ;
+    rdfs:label "value" .
+
+linkml:ClassDefinition a owl:Class ;
+    rdfs:label "class_definition" ;
+    skos:definition "the definition of a class or interface" .
+
+linkml:SlotDefinition a owl:Class ;
+    rdfs:label "slot_definition" ;
+    skos:definition "the definition of a property or a slot" .
+
+<https://goodhealthpass.org/ghp-vocab/String> a owl:Class,
+        linkml:TypeDefinition ;
+    rdfs:label "string" ;
+    rdfs:subClassOf [ a owl:Restriction ;
+            owl:onDataRange xsd:string ;
+            owl:onProperty linkml:topValue ;
+            owl:qualifiedCardinality 1 ] .
+
+
+
