@@ -1,0 +1,29 @@
+{
+  "name": "ghp-vocab",
+  "version": "0.1.0",
+  "description": "GHP vocabulary generator from yaml spec (to generate json schema, jsonld context, owl, rdf, markdown)",
+  "main": "ghp-vocab.js",
+  "directories": {
+    "vocab": "ghp_vocab"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mukundanps/ghp-vocab.git"
+  },
+  "keywords": [
+    "GHP",
+    "JSON",
+    "JSON-LD",
+    "OWL",
+    "RDF"
+  ],
+  "author": "Mukundan Parthasarathy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mukundanps/ghp-vocab/issues"
+  },
+  "homepage": "https://github.com/mukundanps/ghp-vocab#readme"
+}
