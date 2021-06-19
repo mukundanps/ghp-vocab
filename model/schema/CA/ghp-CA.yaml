@@ -1,0 +1,136 @@
+id: https://goodhealthpass.org/ghp-vocab
+title: Good Health Pass vocabulary for Covid-19
+name: ghp-vocab-ca
+license: https://creativecommons.org/publicdomain/zero/1.0/
+version: 0.0.1
+
+prefixes:
+ linkml: https://w3id.org/linkml/
+ sdo: https://schema.org/
+ ghp-ca: https://goodhealthpass.org/ghp-vocab/ca/
+ xsd: http://www.w3.org/2001/XMLSchema#
+ ca-baseline: http://hl7.org/fhir/ca/baseline/
+ ca-cvc: https://cvc.canimmunize.ca/v3/
+ fhir: http://hl7.org/fhir/
+ gs1: http://www.gs1.org/
+ sct: http://snomed.info/sct
+ 
+
+
+default_prefix: ghp-ca
+default_curi_maps:
+ - semweb_context
+
+types:
+  string:
+    base: str
+    uri: xsd:string
+
+classes:
+  EventRecipient:
+    description: Minimal Subject information mapped to CA baseline or CVC Profile
+    class_uri: ghp-ca:EventRecipient
+    attributes:
+      givenName:
+        required: true
+        alias: gn
+        slot_uri: ca-baseline:Patient.name.givenName
+      familyName:
+        required: true
+        alias: fn
+        slot_uri: ca-baseline:Patient.name.familyName
+      birthDate:
+        required: true
+        alias: dob
+        slot_uri: ca-baseline:Patient.birthDate
+  
+  VaccinationCertificate:
+    description: Minimal vaccination event information mapped to CA Baseline or CVC FHIR Profile
+    class_uri: ghp-ca:VaccinationCertificate
+    attributes:
+      administeringCentre:
+        required: true 
+        alias: ac 
+        slot_uri: gs1:gln
+      batchNumber:
+        required: true
+        alias: bn
+        slot_uri: ca-cvc:StructureDefinition/ca-cvc-lots
+      countryOfVaccination:
+        required: true
+        alias: co
+        slot_uri: fhir:ValueSet/iso3166-1-2
+      dateOfVaccination:
+        required: true
+        slot_uri: ca-baseline:Immunization.occurenceDateTime
+      healthProfessional:
+        required: true
+        alias: hp
+        slot_uri: ca-cvc:ValueSet/HealthcareProviderRoleType
+      nextVaccinationDate:
+        required: false
+        slot_uri: ca-baseline:ImmunizationRecommendation.dateCriterion.value
+      order:
+        alias: dn
+        required: true
+        slot_uri: ca-baseline:Immunization.protocolApplied.doseNumber
+      vaccine:
+        required: true
+        alias: mp
+        slot_uri: ca-baseline:ValueSet/vaccinecodes
+
+  VaccinationCredential:
+    description: Good Health Pass Vaccination credential
+    class_uri: ghp-ca:VaccinationCredential
+    attributes:
+      ver:
+        required: true
+      certificateIssuer:
+        required: true
+        alias: is
+      certificateNumber:
+        required: true
+        alias: ci
+      linkedVaccineCertificate:
+        required: true
+        alias: lc
+        slot_uri: ghp-ca:VaccinationCertificate
+      recipient:
+        required: true
+        slot_uri: ghp-ca:EventRecipient
+      disease:
+        required: true
+        alias: tg
+        slot_uri: sct:900000000000003001
+      vaccineDescription:
+        required: true
+        alias: vd
+        slot_uri: ca-cvc:ValueSet/Generic
+      vaccineType:
+        required: true
+        alias: vt
+        slot_uri: sct:900000000000207008/version/20210131
+      medicinalProductName:
+        required: true
+        alias: mp
+        slot_uri: ca-cvc:Bundle/Tradename
+      marketingAuthorizationHolder:
+        required: true
+        alias: ma 
+        slot_uri: ca-cvc:StructureDefinition/ca-cvc-market-authorization-holder
+      countryOfVaccination:
+        required: true
+        alias: co
+        slot_uri: fhir:ValueSet/iso3166-1-2
+      dateOfVaccination:
+        required: true
+        slot_uri: ca-baseline:Immunization.occurenceDateTime
+      order:
+        alias: dn
+        required: true
+        slot_uri: ca-baseline:Immunization.protocolApplied.doseNumber
+      
+      
+
+      
+
