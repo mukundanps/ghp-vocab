@@ -1,22 +1,13 @@
-id: https://goodhealthpass.org/ghp-vocab
+id: https://w3id.org/ghp/ca
 title: Good Health Pass vocabulary for Covid-19
 name: ghp-vocab-ca
 license: https://creativecommons.org/publicdomain/zero/1.0/
 version: 0.0.1
 
 prefixes:
- linkml: https://w3id.org/linkml/
- sdo: https://schema.org/
- ghp-ca: https://goodhealthpass.org/ghp-vocab/ca/
- xsd: http://www.w3.org/2001/XMLSchema#
- ca-baseline: http://hl7.org/fhir/ca/baseline/
- ca-cvc: https://cvc.canimmunize.ca/v3/
- fhir: http://hl7.org/fhir/
- gs1: http://www.gs1.org/
- sct: http://snomed.info/sct
  
-
-
+ ghp-ca: https://w3id.org/ghp/ca/
+ 
 default_prefix: ghp-ca
 default_curi_maps:
  - semweb_context
@@ -33,16 +24,16 @@ classes:
     attributes:
       givenName:
         required: true
-        alias: gn
-        slot_uri: ca-baseline:Patient.name.givenName
+        #alias: gn
+        slot_uri: http://hl7.org/fhir/ca/baseline/Patient.name.givenName
       familyName:
         required: true
-        alias: fn
-        slot_uri: ca-baseline:Patient.name.familyName
+        #alias: fn
+        slot_uri: http://hl7.org/fhir/ca/baseline/Patient.name.familyName
       birthDate:
         required: true
-        alias: dob
-        slot_uri: ca-baseline:Patient.birthDate
+        #alias: dob
+        slot_uri: http://hl7.org/fhir/ca/baseline/Patient.birthDate
   
   VaccinationCertificate:
     description: Minimal vaccination event information mapped to CA Baseline or CVC FHIR Profile
@@ -50,85 +41,87 @@ classes:
     attributes:
       administeringCentre:
         required: true 
-        alias: ac 
-        slot_uri: gs1:gln
+        #alias: ac 
+        slot_uri: http://www.gs1.org/gln
       batchNumber:
         required: true
-        alias: bn
-        slot_uri: ca-cvc:StructureDefinition/ca-cvc-lots
+        #alias: bn
+        slot_uri: https://cvc.canimmunize.ca/v3/StructureDefinition/ca-cvc-lots
       countryOfVaccination:
         required: true
-        alias: co
-        slot_uri: fhir:ValueSet/iso3166-1-2
+        #alias: co
+        slot_uri: http://hl7.org/fhir/ValueSet/iso3166-1-2
       dateOfVaccination:
         required: true
-        slot_uri: ca-baseline:Immunization.occurenceDateTime
+        slot_uri: http://hl7.org/fhir/ca/baseline/Immunization.occurenceDateTime
       healthProfessional:
         required: true
-        alias: hp
-        slot_uri: ca-cvc:ValueSet/HealthcareProviderRoleType
+        #alias: hp
+        slot_uri: https://cvc.canimmunize.ca/v3/ValueSet/HealthcareProviderRoleType
       nextVaccinationDate:
         required: false
-        slot_uri: ca-baseline:ImmunizationRecommendation.dateCriterion.value
+        slot_uri: http://hl7.org/fhir/ca/baseline/ImmunizationRecommendation.dateCriterion.value
       order:
-        alias: dn
+        #alias: dn
         required: true
-        slot_uri: ca-baseline:Immunization.protocolApplied.doseNumber
+        slot_uri: http://hl7.org/fhir/ca/baseline/Immunization.protocolApplied.doseNumber
       vaccine:
         required: true
-        alias: mp
-        slot_uri: ca-baseline:ValueSet/vaccinecodes
+        #alias: mp
+        slot_uri: http://hl7.org/fhir/ca/baseline/ValueSet/vaccinecodes
 
   VaccinationCredential:
     description: Good Health Pass Vaccination credential
     class_uri: ghp-ca:VaccinationCredential
     attributes:
-      ver:
-        required: true
       certificateIssuer:
         required: true
-        alias: is
+        #alias: is
+        range: string
       certificateNumber:
         required: true
-        alias: ci
+        #alias: ci
+        range: string
+        
       linkedVaccineCertificate:
         required: true
-        alias: lc
+        #alias: lc
         slot_uri: ghp-ca:VaccinationCertificate
+        range: string
       recipient:
         required: true
         slot_uri: ghp-ca:EventRecipient
       disease:
         required: true
-        alias: tg
-        slot_uri: sct:900000000000003001
+        #alias: tg
+        slot_uri: http://snomed.info/sct/900000000000003001
       vaccineDescription:
         required: true
-        alias: vd
-        slot_uri: ca-cvc:ValueSet/Generic
+        #alias: vd
+        slot_uri: https://cvc.canimmunize.ca/v3/ValueSet/Generic
       vaccineType:
         required: true
-        alias: vt
-        slot_uri: sct:900000000000207008/version/20210131
+        #alias: vt
+        slot_uri: http://snomed.info/sct/900000000000207008/version/20210131
       medicinalProductName:
         required: true
-        alias: mp
-        slot_uri: ca-cvc:Bundle/Tradename
+        #alias: mp
+        slot_uri: https://cvc.canimmunize.ca/v3/Bundle/Tradename
       marketingAuthorizationHolder:
         required: true
-        alias: ma 
-        slot_uri: ca-cvc:StructureDefinition/ca-cvc-market-authorization-holder
+        #alias: ma 
+        slot_uri: https://cvc.canimmunize.ca/v3/StructureDefinition/ca-cvc-market-authorization-holder
       countryOfVaccination:
         required: true
-        alias: co
-        slot_uri: fhir:ValueSet/iso3166-1-2
+        #alias: co
+        slot_uri: http://hl7.org/fhir/ValueSet/iso3166-1-2
       dateOfVaccination:
         required: true
-        slot_uri: ca-baseline:Immunization.occurenceDateTime
+        slot_uri: http://hl7.org/fhir/ca/baseline/Immunization.occurenceDateTime
       order:
-        alias: dn
+        #alias: dn
         required: true
-        slot_uri: ca-baseline:Immunization.protocolApplied.doseNumber
+        slot_uri: http://hl7.org/fhir/ca/baseline/Immunization.protocolApplied.doseNumber
       
       
 
